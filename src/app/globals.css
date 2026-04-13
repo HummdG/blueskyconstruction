@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    scroll-behavior: smooth;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-sans text-brand-navy bg-white;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.brand.blue');
+    outline-offset: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Site container */
+  .container-site {
+    @apply max-w-6xl mx-auto px-5 sm:px-8 lg:px-10;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  /* Blue underline accent */
+  .blue-underline {
+    @apply relative pb-0.5;
+  }
+  .blue-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: theme('colors.brand.blue');
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay {
+    position: relative;
+    isolation: isolate;
+  }
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Staggered animation helpers */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+
+  .animate-wait {
+    opacity: 0;
+  }
+}
+
+@layer components {
+  /* Service list row */
+  .service-row {
+    @apply flex items-center gap-4 py-5 border-b border-surface-border-light
+      transition-all cursor-default relative group;
+  }
+
+  .service-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: theme('colors.brand.blue');
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .service-row:hover::before {
+    transform: scaleY(1);
+  }
+
+  .service-row-number {
+    @apply font-display italic text-brand-blue text-2xl w-8 text-right flex-shrink-0;
+    font-feature-settings: "onum";
+  }
+
+  .service-row-name {
+    @apply font-display text-xl text-brand-navy group-hover:text-brand-blue transition-colors flex-1;
+  }
+
+  .service-row-arrow {
+    @apply text-surface-stone group-hover:text-brand-blue group-hover:translate-x-1 transition-all;
+  }
+
+  /* CTA button variants */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2.5 px-6 py-4 bg-brand-navy text-white
+      text-[13px] font-semibold tracking-wide uppercase rounded-btn
+      hover:bg-brand-navy-mid transition-colors;
+  }
+
+  .btn-blue {
+    @apply inline-flex items-center justify-center gap-2.5 px-6 py-4 bg-brand-blue text-white
+      text-[13px] font-semibold tracking-wide uppercase rounded-btn
+      hover:bg-brand-blue-dark transition-colors;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2.5 px-6 py-4
+      border border-surface-border-light text-brand-navy
+      text-[13px] font-semibold tracking-wide uppercase rounded-btn
+      hover:border-brand-blue hover:text-brand-blue transition-colors;
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center justify-center gap-2.5 px-6 py-4
+      border border-white/30 text-white
+      text-[13px] font-semibold tracking-wide uppercase rounded-btn
+      hover:border-white hover:bg-white/10 transition-colors;
+  }
+}
