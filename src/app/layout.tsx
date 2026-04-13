@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter } from 'next/font/google'
+import { Cormorant_Garamond, Outfit, DM_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -7,19 +7,26 @@ import WhatsAppWidget from '@/components/layout/WhatsAppWidget'
 import { SITE_CONFIG } from '@/data/siteConfig'
 import { buildLocalBusinessSchema, buildWebsiteSchema } from '@/lib/jsonld'
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-cormorant',
   display: 'swap',
-  weight: ['400', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
 })
 
-const inter = Inter({
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-outfit',
   display: 'swap',
   weight: ['300', '400', '500', '600', '700'],
+})
+
+const dmMono = DM_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+  weight: ['300', '400', '500'],
 })
 
 export const metadata: Metadata = {
@@ -87,14 +94,14 @@ function JsonLd({ data }: { data: Record<string, unknown> }) {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-GB" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en-GB" className={`${cormorant.variable} ${outfit.variable} ${dmMono.variable}`}>
       <head>
         <JsonLd data={buildWebsiteSchema()} />
         <JsonLd data={buildLocalBusinessSchema()} />
       </head>
       <body className="min-h-screen flex flex-col font-sans text-brand-navy bg-white antialiased">
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-16">{children}</main>
         <Footer />
         <WhatsAppWidget />
       </body>
