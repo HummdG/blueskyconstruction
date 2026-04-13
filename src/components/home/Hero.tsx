@@ -52,7 +52,7 @@ export default function Hero() {
               aria-hidden="true"
             />
             <span className="spec-label text-white/55">
-              Available Mon–Fri · Greater London
+              Available Mon–Sat · Greater London
             </span>
           </div>
 

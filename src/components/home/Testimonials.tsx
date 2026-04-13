@@ -92,7 +92,7 @@ export default function Testimonials() {
         <div className="md:hidden">
           <TestimonialCard t={TESTIMONIALS[active]} />
 
-          <div className="flex items-center justify-between mt-6">
+          <div className="flex items-center justify-between mt-6 relative z-[51]">
             <button
               onClick={() => setActive((a) => (a - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
               className="w-10 h-10 rounded-full border border-surface-border-light flex items-center justify-center
