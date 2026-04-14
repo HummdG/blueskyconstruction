@@ -8,7 +8,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   {
     src: '/assets/bluesky/hero-bathroom.jpg',
     alt: 'Modern bathroom installation with contemporary fittings',
-    category: 'bathroom',
+    category: '',
   },
   {
     src: '/assets/bluesky/project-01.jpg',

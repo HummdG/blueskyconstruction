@@ -74,14 +74,14 @@ export default function Gallery() {
                 />
 
                 {/* Category badge */}
-                <div className="absolute bottom-3 left-3 z-10">
+                {/* <div className="absolute bottom-3 left-3 z-10">
                   <span
                     className="spec-label inline-block px-3 py-1.5
                                bg-brand-navy/80 text-white/80 backdrop-blur-sm rounded"
                   >
                     {CATEGORY_LABELS[item.category]}
                   </span>
-                </div>
+                </div> */}
 
                 {/* Hover expand icon */}
                 <div
